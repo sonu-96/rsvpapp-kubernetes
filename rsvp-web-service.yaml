@@ -8,7 +8,6 @@ spec:
   type: LoadBalancer
   ports:
   - name: tcp-31081-5000
-    nodePort: 31081
     port: 5001
     protocol: TCP
   selector:
