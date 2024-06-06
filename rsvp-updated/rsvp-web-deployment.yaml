@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rsvp
+spec: 
+  replicas: 1
+  selector:
+   matchLabels: 
+    app: rsvp
+  template:
+   metadata:
+    labels:
+     app: rsvp
+   spec:
+    containers:
+    - name: rsvp-app
+      image: quay.io/mayank123modi/rsvpapp
+      env:
+      - name: MONGODB_HOST
+        value: mongodbst
+      ports:
+      - containerPort: 5000
+        name: web-port

@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rsvp-db
+spec: 
+  replicas: 1
+  selector: 
+   matchLabels: 
+    appdb: rsvpdb2
+  template:
+    metadata:
+      labels:
+        appdb: rsvpdb2
+    spec: 
+      containers:
+      - name: rsvpd-db2
+        image: quay.io/mayank123modi/mongodb 
+        env:
+        - name: MONGODB_DATABASE
+          value: rsvpdata
+        ports:
+        - containerPort: 27017
